@@ -12,7 +12,7 @@ def find_hcf(a, b):
             b -= a  # Subtract smaller number from larger number
 
     # Return the HCF
-    return a
+    return a #or b (they are equal)
 
 
 # Example usage

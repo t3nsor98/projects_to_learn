@@ -30,6 +30,31 @@ app.get("/data/:id", (req, res) => {
     res.status(404).json({ error: "Data not found" });
   }
 });
+// patch data
+app.patch("/data/:id", (req, res) => {
+  const { id } = req.params;
+  const { name, designation } = req.body;
+  const dataItem = data.find((item) => item.id === parseInt(id));
+  if (dataItem) {
+    dataItem.name = name;
+    dataItem.designation = designation;
+    res.json(dataItem);
+  } else {
+    res.status(404).json({ error: "Data not found" });
+  }
+});
+
+// delete data
+app.delete("/data/:id", (req, res) => {
+  const { id } = req.params;
+  const dataItem = data.find((item) => item.id === parseInt(id));
+  if (dataItem) {
+    data = data.filter((item) => item.id !== parseInt(id));
+    res.json(dataItem);
+  } else {
+    res.status(404).json({ error: "Data not found" });
+  }
+});
 
 app.get("/", (req, res) => {
   res.send("Hello World!");

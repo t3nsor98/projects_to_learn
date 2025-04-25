@@ -56,6 +56,12 @@ app.delete("/data/:id", (req, res) => {
   }
 });
 
+// delete all data
+app.delete("/data", (req, res) => {
+  data = [];
+  res.json(data);
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
